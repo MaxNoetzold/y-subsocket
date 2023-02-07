@@ -1,1 +1,10 @@
-Trying to extend y-websocket to subdocs.
+This is basically a fork of y-websocket, where I try to add subsocket support. But since I wanted to document multiple attempts, it is not. Instead, each folder contains the files that have changed compared to the original.
+
+In /try1 I tried to finish this fork: https://discuss.yjs.dev/t/multiple-room-sync-subdocument/403/8
+
+In /try2 I tried to implement this comment: https://discuss.yjs.dev/t/multiple-room-sync-subdocument/403/9
+The differences to /try1 are basically that the message type messageSubDocSync got removed again. And instead every messageSync message sends the corresponding docId.
+
+Both attempts do not work. Both even fail on the same problem and that is that the ydoc.on("update") listeners are not triggered when a subdoc is edited.
+
+Before all this I already tried to sync subdocs by creating an extra provider for each subdoc. This worked as long as the connection to the server was established. During reconnects it happened very regularly that parts of the doc were deleted.
